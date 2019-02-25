@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <ul id="navbar">
+      <% if current_user_exists %>
+        <li class="navbar"><%= link_to "Log out", logout_path, method: :delete %></li>
+        <li class="navbar">Logged in as: <%= link_to "#{current_user.name}", current_user %></li>
+        <li class="navbar"><%= link_to "New event", new_event_path %></li>
+      <% else %>
+        <li class="navbar"><%= link_to "Log in", new_session_path %></li>
+      <% end %>
+        <li class="navbar"><%= link_to "All events", events_path %></li>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

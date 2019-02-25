@@ -1,0 +1,29 @@
+<h1>All events</h1>
+
+<h3>Previous events:</h3>
+<% if @prev_events.any? %>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Host</th>
+    </tr>
+    <%= render @prev_events %>
+  </table>
+<% else %>
+  No previous events to display
+<% end %>
+
+<h3>Upcoming events:</h3>
+<% if @upcoming_events.any? %>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Host</th>
+    </tr>
+    <%= render @upcoming_events %>
+  </table>
+<% else %>
+  No upcoming events to display
+<% end %>

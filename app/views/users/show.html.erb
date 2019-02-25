@@ -1,0 +1,43 @@
+<h1><%= @user.name %></h1>
+
+<h3>Created:</h3>
+<% if @events.any? %>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Host</th>
+    </tr>
+    <%= render @events %>
+  </table>
+<% else %>
+  No created events to display
+<% end %>
+
+<h3>Previously attended events:</h3>
+<% if @prev_events.any? %>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Host</th>
+    </tr>
+    <%= render @prev_events %>
+  </table>
+<% else %>
+  No previous attendances to display
+<% end %>
+
+<h3>Upcoming events:</h3>
+<% if @upcoming_events.any? %>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Host</th>
+    </tr>
+    <%= render @upcoming_events %>
+  </table>
+<% else %>
+  No upcoming attendances to display
+<% end %>

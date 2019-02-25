@@ -1,0 +1,13 @@
+<h1>Sign up</h1>
+
+<% if @user && @user.errors.any? %>
+  <h3><%= @user.errors.full_messages %></h3>
+<% end %>
+
+<%= form_for(:user, url: users_path) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Submit" %>
+<% end %>

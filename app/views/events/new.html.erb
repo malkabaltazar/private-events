@@ -1,0 +1,17 @@
+<h1>New event</h1>
+
+<% if @event && @event.errors.any? %>
+  <h3><%= @event.errors.full_messages %></h3>
+<% end %>
+
+
+<%= form_for(:event, url: events_path) do |f| %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %><br>
+
+  <%= f.label :date %>
+  <%= f.date_field :date %> (mm/dd/yyyy) <br>
+
+  <%= f.submit "Submit" %>
+<% end %>

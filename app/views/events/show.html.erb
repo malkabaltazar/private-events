@@ -1,0 +1,27 @@
+<h1>Viewing event</h1>
+
+<ul>
+  <li>Location: <%= @event.location %></li>
+  <li>Date: <%= @event.date %></li>
+  <li>Created by: <%= link_to "#{@event.creator.name}", @event.creator %></li>
+</ul>
+
+<h3>Attendees:</h3>
+<ul>
+  <% @attendees.each do |attendee| %>
+    <li><%= link_to "#{attendee.name}", attendee %></li>
+  <% end %>
+  <% if current_user_exists %>
+    <li>
+      <%= form_for(:event_attendance, url: event_attendances_path) do |f| %>
+
+        <%= f.hidden_field :attendee_id, value: current_user.id %>
+        <%= f.hidden_field :attended_event_id, value: @event.id %>
+
+        <%= f.submit "Attend" %>
+      <% end %>
+    </li>
+  <% else %>
+    <li><%= link_to "Log in", new_session_path %> to attend.</li>
+  <% end %>
+</ul>
